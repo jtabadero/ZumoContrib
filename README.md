@@ -1,7 +1,7 @@
 SQL Server and SQL Compact Stores for Microsoft Azure Mobile Services
 ===========
 
-This project contains the two sample offline stores for use with Microsoft Azure Mobile Services Offline Sync. 
+This project contains the two sample offline stores for use with [Microsoft Azure Mobile Services Offline Sync]. 
 
 These sample local store implementations can be used as an alternative to using SQLite especially for desktop applications (WPF, WinForms) that would rather use SQLCE or SQL Server-based stores.
 
@@ -34,5 +34,7 @@ To use SQL Server-based local store, use the line below:
 ```  
   
 Note: Unlike the SQLite and SQLCE local stores, the SQL Server Database must already exists.
+
+[Microsoft Azure Mobile Services Offline Sync]:http://azure.microsoft.com/en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data/
 
 
