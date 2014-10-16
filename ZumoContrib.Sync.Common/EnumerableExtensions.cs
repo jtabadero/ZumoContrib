@@ -1,14 +1,9 @@
-﻿// ----------------------------------------------------------------------------
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// ----------------------------------------------------------------------------
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace ZumoContrib.Sync.SQLCeStore
+namespace ZumoContrib.Sync.Common
 {
-    internal static class EnumerableExtensions
+    public static class EnumerableExtensions
     {
         /// <summary>
         /// Splits the given sequence into sequences of the given length.
