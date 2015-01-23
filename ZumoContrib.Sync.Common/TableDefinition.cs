@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.WindowsAzure.MobileServices;
 
-namespace ZumoContrib.Sync.SQLCeStore
+namespace ZumoContrib.Sync.Common
 {
     [SuppressMessage("Microsoft.Interoperability", "CA1405:ComVisibleTypeBaseTypesShouldBeComVisible")]
-    internal class TableDefinition : Dictionary<string, ColumnDefinition>
+    public class TableDefinition : Dictionary<string, ColumnDefinition>
     {
         public MobileServiceSystemProperties SystemProperties { get; private set; }
 

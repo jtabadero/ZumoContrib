@@ -9,6 +9,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.Query;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using Newtonsoft.Json.Linq;
+using ZumoContrib.Sync.Common;
 
 namespace ZumoContrib.Sync.SQLStore
 {

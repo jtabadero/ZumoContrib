@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.Query;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using Newtonsoft.Json.Linq;
+using ZumoContrib.Sync.Common;
 
 namespace ZumoContrib.Sync.SQLCeStore
 {
@@ -26,24 +27,18 @@ namespace ZumoContrib.Sync.SQLCeStore
         /// <summary>
         /// Initializes a new instance of <see cref="MobileServiceSqlCeStore"/>
         /// </summary>
-        /// <param name="fileName">Name/path of the local SQLCe database file.</param>
-        public MobileServiceSqlCeStore(string fileName)
+        /// <param name="connectionString">SQL Server Compact connection string</param>
+        public MobileServiceSqlCeStore(string connectionString)
         {
-            if (fileName == null)
+            if (connectionString == null)
             {
-                throw new ArgumentNullException("fileName");
+                throw new ArgumentNullException("connectionString");
             }
+			//Will throw if invalid connection string
+		    var conn = new SqlCeConnection(connectionString);
 
-            _dataSource = string.Format("Data Source={0}", fileName);
-
-            if (!File.Exists(fileName))
-            {
-                using (var engine = new SqlCeEngine(_dataSource))
-                {
-                    engine.CreateDatabase();
-                }
-            }
-
+	        _dataSource = connectionString;
+			CreateDatabaseIfNotExists(_dataSource);
         }
 
         /// <summary>
@@ -410,6 +405,20 @@ namespace ZumoContrib.Sync.SQLCeStore
             }
         }
 
+		private static void CreateDatabaseIfNotExists(string connectionString)
+		{
+			using (var conn = new SqlCeConnection(connectionString))
+			{
+				if (!File.Exists(conn.Database))
+				{
+					using (SqlCeEngine engine = new SqlCeEngine(connectionString))
+					{
+						engine.CreateDatabase();
+					}
+				}
+			}
+		}
+
         private bool TableExists(string tableName)
         {
             using (var conn = new SqlCeConnection(_dataSource))
@@ -471,7 +480,7 @@ namespace ZumoContrib.Sync.SQLCeStore
         }
 
         /// <summary>
-        /// Executes a sql statement on a given table in local SQLite database.
+        /// Executes a sql statement on a given table in local SQLCE database.
         /// </summary>
         /// <param name="sql">SQL statement to execute.</param>
         /// <param name="parameters">The query parameters.</param>

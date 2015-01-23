@@ -1,9 +1,13 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+
+using System;
 using Newtonsoft.Json.Linq;
 
-namespace ZumoContrib.Sync.SQLStore
+namespace ZumoContrib.Sync.Common
 {
-    internal class ColumnDefinition
+    public class ColumnDefinition
     {
         public string Name { get; private set; }
 
