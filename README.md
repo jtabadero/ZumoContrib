@@ -16,7 +16,7 @@ MobileServiceSqlCeStore
 
 To use SQL CE as an offline store, use the line below instead:
 ```sh
-  var store = new MobileServiceSqlCeStore(@"c:\<yoursqlcompactdbhere>.sdf");
+  var store = new MobileServiceSqlCeStore(@"Data Source=c:\<yoursqlcompactdbhere>.sdf");
 ```
 
 Note: If the SQL CE database doesn't exists, it will automatically be created.  
